@@ -25,8 +25,8 @@ import random                           # Import random
 #--------------------------------------------------------------
 # Set Hyper Parameters
 batch_size = 32                                             # How many examples to process in parallel
-block_size = 8                                              # Maximum context length for predictions
-max_iters = 200000                                          # Maximum training iterations
+block_size = 10                                              # Maximum context length for predictions
+max_iters = 5000                                          # Maximum training iterations
 eval_interval = 300                                         # Train and Val loss to be evaluated every #eval_interval steps
 learning_rate = 1e-3                                        # Learning rate for optimization
 device = 'cuda' if torch.cuda.is_available() else 'cpu'     # Run on GPU if available
