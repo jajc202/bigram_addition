@@ -58,7 +58,21 @@ nums_to_add = torch.randint(min_int, max_int, (num_examples,2))
 sums = nums_to_add.sum(dim=1, keepdim=True)
 
 # Concatenate the sums as a new column
-data = torch.cat((nums_to_add, sums), dim=1)
+all_nums = torch.cat((nums_to_add, sums), dim=1)
+
+# Initialize an empty string to hold the final result
+final_string = ""
+
+# Iterate through each row in new_tensor
+for row in all_nums:
+    # Extract the elements
+    num1, num2, result = row.tolist()
+    
+    # Create the string in the format 'num1 + num2 = result\n'
+    row_string = f'{int(num1)} + {int(num2)} = {int(result)}\n'
+    
+    # Append the string to the final string
+    final_string += row_string
 
 
 #--------------------------------------------------------------
