@@ -49,10 +49,16 @@ input_path = r"C:\Users\josha\OneDrive\Attachments\Documents\Python\Machine Lear
 #--------------------------------------------------------------
 
 #--------------------------------------------------------------
-# Import Training Data
+# Create Training Data
 #--------------------------------------------------------------
-with open(input_path, 'r', encoding='utf-8') as f:
-    text = f.read()
+# Define #num_examples groups of 2 numbers to be added
+nums_to_add = torch.randint(min_int, max_int, (num_examples,2))
+
+# Compute the sum of each row (along dimension 1)
+sums = nums_to_add.sum(dim=1, keepdim=True)
+
+# Concatenate the sums as a new column
+data = torch.cat((nums_to_add, sums), dim=1)
 
 
 #--------------------------------------------------------------
