@@ -82,7 +82,7 @@ for row in all_nums:
 torch.manual_seed(1337)
 
 # Get list of all unique characters in the dataset
-chars = sorted(list(set(text)))
+chars = sorted(list(set(final_string)))
 vocab_size = len(chars)
 
 # Create a mapping from characters to integers
@@ -96,7 +96,7 @@ decode = lambda l: ''.join([itos[i] for i in l])    # Decoder: take a list of in
 # Tokenise the dataset
 #   Our model is a character-level model
 #   hence our tokens are individual characters
-data = torch.tensor(encode(text), dtype=torch.long)
+data = torch.tensor(encode(final_string), dtype=torch.long)
 
 
 #--------------------------------------------------------------
