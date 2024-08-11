@@ -116,12 +116,12 @@ def get_batch(split):
     else:
         raise ValueError(f"Invalid split value: '{split}'. Expected one of: 'train', 'val', 'test'.")
     
-    # Generate #batch_size random indexes from 0 to len(data) - block_size
-    ix = torch.randint(len(data) - block_size, (batch_size,)) 
+    # Generate #batch_size random indexes
+    ix = torch.randint(data.size()[0], (batch_size,)) 
 
     # Gather inputs (x) and targets (y)
-    x = torch.stack([data[i:i+block_size] for i in ix])
-    y = torch.stack([data[i+1:i+block_size+1] for i in ix])
+    x = torch.stack([data[i, :2] for i in ix])
+    y = torch.stack([data[i, -1] for i in ix])
     return x, y
 
 
