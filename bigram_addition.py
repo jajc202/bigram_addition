@@ -108,8 +108,8 @@ val_pct = 0.1
 test_pct = 0.0      # We wont define a test set for now
 
 # Calculate split indexes
-n1 = int(train_pct * data.size()[0])
-n2 = int((train_pct + val_pct) * data.size()[0])
+n1 = int(train_pct * len(data))
+n2 = int((train_pct + val_pct) * len(data))
 
 # Create splits
 train_data = data[:n1]
