@@ -94,14 +94,13 @@ val_pct = 0.1
 test_pct = 0.0      # We wont define a test set for now
 
 # Calculate split indexes
-n1 = int(train_pct * len(data))
-n2 = int((train_pct + val_pct) * len(data))
+n1 = int(train_pct * data.size()[0])
+n2 = int((train_pct + val_pct) * data.size()[0])
 
 # Create splits
 train_data = data[:n1]
 val_data = data[n1:n2]
 test_data = data[n2:]
-
 
 #--------------------------------------------------------------
 # Define function to generate batches
