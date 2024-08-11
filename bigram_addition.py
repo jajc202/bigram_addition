@@ -40,7 +40,7 @@ max_int = 1000
 min_int = -1000
 
 # Define number of examples
-num_examples = 100000
+num_examples = 10000000
 
 # Set input path for training data
 input_path = r"C:\Users\josha\OneDrive\Attachments\Documents\Python\Machine Learning\Andrej Karpathy Lectures\bigram\02. Data\tiny_shakespeare.txt"
