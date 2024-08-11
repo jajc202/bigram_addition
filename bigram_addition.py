@@ -60,19 +60,11 @@ sums = nums_to_add.sum(dim=1, keepdim=True)
 # Concatenate the sums as a new column
 all_nums = torch.cat((nums_to_add, sums), dim=1)
 
-# Initialize an empty string to hold the final result
-final_string = ""
+# Use a list comprehension to create a list of formatted strings
+rows_as_strings = [f'{int(num1)} + {int(num2)} = {int(result)}\n' for num1, num2, result in data.tolist()]
 
-# Iterate through each row in new_tensor
-for row in all_nums:
-    # Extract the elements
-    num1, num2, result = row.tolist()
-    
-    # Create the string in the format 'num1 + num2 = result\n'
-    row_string = f'{int(num1)} + {int(num2)} = {int(result)}\n'
-    
-    # Append the string to the final string
-    final_string += row_string
+# Use join to concatenate all strings into one large string
+final_string = ''.join(rows_as_strings)
 
 
 #--------------------------------------------------------------
