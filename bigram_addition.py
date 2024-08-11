@@ -35,6 +35,13 @@ eval_iters = 200                                            # Number of batches 
 # Set number of tokens to generate
 max_tokens = 100
 
+# Define max and min numbers to sum with
+max_int = 1000
+min_int = -1000
+
+# Define number of examples
+num_examples = 100000
+
 # Set input path for training data
 input_path = r"C:\Users\josha\OneDrive\Attachments\Documents\Python\Machine Learning\Andrej Karpathy Lectures\bigram\02. Data\tiny_shakespeare.txt"
 #--------------------------------------------------------------
