@@ -40,7 +40,7 @@ max_int = 1000
 min_int = -1000
 
 # Define number of examples
-num_examples = 10000000
+num_examples = 100000
 
 # Set input path for training data
 input_path = r"C:\Users\josha\OneDrive\Attachments\Documents\Python\Machine Learning\Andrej Karpathy Lectures\bigram\02. Data\tiny_shakespeare.txt"
@@ -61,7 +61,7 @@ sums = nums_to_add.sum(dim=1, keepdim=True)
 all_nums = torch.cat((nums_to_add, sums), dim=1)
 
 # Use a list comprehension to create a list of formatted strings
-rows_as_strings = [f'{int(num1)} + {int(num2)} = {int(result)}\n' for num1, num2, result in data.tolist()]
+rows_as_strings = [f'{int(num1)} + {int(num2)} = {int(result)}\n' for num1, num2, result in all_nums.tolist()]
 
 # Use join to concatenate all strings into one large string
 final_string = ''.join(rows_as_strings)
