@@ -31,6 +31,7 @@ eval_interval = 300                                         # Train and Val loss
 learning_rate = 1e-2                                        # Learning rate for optimization
 device = 'cuda' if torch.cuda.is_available() else 'cpu'     # Run on GPU if available
 eval_iters = 200                                            # Number of batches to compute average loss over in estimate_loss()
+embedding_dim = 5                                           # Embedding dimension
 
 # Set number of tokens to generate
 max_tokens = 100
@@ -173,14 +174,16 @@ class BigramLanguageModel(nn.Module):
 
     # Initialise the class
     def __init__(self, vocab_size):
-        super().__init__()                                                  # Initialise using parent class nn.Module
-        self.token_embedding_table = nn.Embedding(vocab_size, vocab_size)   # Build embedding table
+        super().__init__()                                                      # Initialise using parent class nn.Module
+        self.token_embedding_table = nn.Embedding(vocab_size, embedding_dim)    # Build embedding table
+        self.fc1 = nn.Linear(embedding_dim, vocab_size)                         # Define the additional fully connected layer
 
     # Define forward pass
     #   idx, targets are tensors of size (B,T)
     def forward(self, idx, targets=None):
         # Select a row from embedding table for each index of each batch
-        logits = self.token_embedding_table(idx)
+        embeddings = self.token_embedding_table(idx)
+        logits = self.fc1(embeddings)
     
         # Calculate loss
         if targets is None:
